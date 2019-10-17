@@ -13,6 +13,8 @@ import signal
 import ast
 
 import argparse
+from termcolor import colored, cprint
+
 
 
 def main(args):
@@ -61,11 +63,12 @@ def mainMenu():
     mmSelect = True
     while mmSelect:
         os.system('clear')
-        print " _  _     ___  ___  _    __  __           "
-        print "| \| |___/ __|/ _ \| |  |  \/  |__ _ _ __ "
-        print "| .` / _ \__ \ (_) | |__| |\/| / _` | '_ \\"
-        print("|_|\_\___/___/\__\_\____|_|  |_\__,_| .__/")
-        print(" v0.7 codingo@protonmail.com        |_|   ")
+
+        print colored(" _  _     ___  ___  _    __  __           ", 'red')
+        print colored("| \| |___/ __|/ _ \| |  |  \/  |__ _ _ __ ", 'red')
+        print colored("| .` / _ \__ \ (_) | |__| |\/| / _` | '_ \\",'red')
+        print colored("|_|\_\___/___/\__\_\____|_|  |_\__,_| .__/", 'red')
+        print colored(" v0.7 codingo@protonmail.com        |_|   ", 'green')
         print "\n"
         print "1-Set options"
         print "2-NoSQL DB Access Attacks"
