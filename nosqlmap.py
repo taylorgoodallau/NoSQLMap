@@ -68,16 +68,17 @@ def mainMenu():
         print colored("| \| |___/ __|/ _ \| |  |  \/  |__ _ _ __ ", 'red', attrs=['bold'])
         print colored("| .` / _ \__ \ (_) | |__| |\/| / _` | '_ \\",'red', attrs=['bold'])
         print colored("|_|\_\___/___/\__\_\____|_|  |_\__,_| .__/", 'red', attrs=['bold'])
-        print colored(" v0.7 codingo@protonmail.com        |_|   ", 'green', attrs=['bold'])
+        print colored("                                    |_|   ", 'red', attrs=['bold'])
+        print colored(" v0.7 codingo@protonmail.com", 'green', attrs=['bold'])
         print "\n"
-        print colored("1-Set options", 'yellow', attrs=['bold'])
-        print colored("2-NoSQL DB Access Attacks", 'yellow', attrs=['bold'])
-        print colored("3-NoSQL Web App attacks", 'yellow', attrs=['bold'])
-        print colored("4-Scan for Anonymous " + platform + " Access", 'yellow', attrs=['bold'])
-        print colored("5-Change Platform (Current: " + platform + ")",'yellow', attrs=['bold'])
-        print colored("x-Exit", 'red', attrs=['bold'])
+        print bold_yellow("1-Set options")
+        print bold_yellow("2-NoSQL DB Access Attacks")
+        print bold_yellow("3-NoSQL Web App attacks")
+        print bold_yellow("4-Scan for Anonymous " + platform + " Access")
+        print bold_yellow("5-Change Platform (Current: " + platform + ")")
+        print bold_yellow("x-Exit")
 
-        select = raw_input("Select an option: ")
+        select = raw_input(colored("Select an option: ", 'green', attrs=['bold']))
 
         if select == "1":
             options()
@@ -92,7 +93,7 @@ def mainMenu():
 
             # Check minimum required options
             else:
-                raw_input("Target not set! Check options.  Press enter to continue...")
+                raw_input(colored("Target not set! Check options.  Press enter to continue...", 'red', attrs=['bold']))
 
 
         elif select == "3":
@@ -105,7 +106,7 @@ def mainMenu():
                     nsmweb.postApps(victim,webPort,uri,https,verb,postData,requestHeaders)
 
             else:
-                raw_input("Options not set! Check host and URI path.  Press enter to continue...")
+                raw_input(colored("Options not set! Check host and URI path.  Press enter to continue...", 'red', attrs=['bold']))
 
 
         elif select == "4":
@@ -122,7 +123,7 @@ def mainMenu():
             sys.exit()
 
         else:
-            raw_input("Invalid selection.  Press enter to continue.")
+            raw_input(colored("Invalid selection.  Press enter to continue.", 'red', attrs=['bold']))
 
 def build_request_headers(reqHeadersIn):
     requestHeaders = {}
@@ -190,7 +191,7 @@ def platSel():
             dbPort = 5984
             return
         else:
-            raw_input("Invalid selection.  Press enter to continue.")
+            raw_input(colored("Invalid selection.  Press enter to continue.", 'red', attrs=['bold']))
 
 
 def options():
@@ -240,20 +241,20 @@ def options():
     while optSelect:
         print "\n\n"
         print "Options"
-        print "1-Set target host/IP (Current: " + str(victim) + ")"
-        print "2-Set web app port (Current: " + str(webPort) + ")"
-        print "3-Set App Path (Current: " + str(uri) + ")"
-        print "4-Toggle HTTPS (Current: " + str(https) + ")"
-        print "5-Set " + platform + " Port (Current : " + str(dbPort) + ")"
-        print "6-Set HTTP Request Method (GET/POST) (Current: " + httpMethod + ")"
-        print "7-Set my local " +  platform + "/Shell IP (Current: " + str(myIP) + ")"
-        print "8-Set shell listener port (Current: " + str(myPort) + ")"
-        print "9-Toggle Verbose Mode: (Current: " + str(verb) + ")"
-        print "0-Load options file"
-        print "a-Load options from saved Burp request"
-        print "b-Save options file"
-        print "h-Set headers"
-        print "x-Back to main menu"
+        print bold_yellow("1-Set target host/IP (Current: " + str(victim) + ")")
+        print bold_yellow("2-Set web app port (Current: " + str(webPort) + ")")
+        print bold_yellow("3-Set App Path (Current: " + str(uri) + ")")
+        print bold_yellow("4-Toggle HTTPS (Current: " + str(https) + ")")
+        print bold_yellow("5-Set " + platform + " Port (Current : " + str(dbPort) + ")")
+        print bold_yellow("6-Set HTTP Request Method (GET/POST) (Current: " + httpMethod + ")")
+        print bold_yellow("7-Set my local " +  platform + "/Shell IP (Current: " + str(myIP) + ")")
+        print bold_yellow("8-Set shell listener port (Current: " + str(myPort) + ")")
+        print bold_yellow("9-Toggle Verbose Mode: (Current: " + str(verb) + ")")
+        print bold_yellow("0-Load options file")
+        print bold_yellow("a-Load options from saved Burp request")
+        print bold_yellow("b-Save options file")
+        print bold_yellow("h-Set headers")
+        print bold_yellow("x-Back to main menu")
 
         select = raw_input("Select an option: ")
 
@@ -293,12 +294,11 @@ def options():
                     optionSet[0] = True
 
         elif select == "2":
-            webPort = raw_input("Enter the HTTP port for web apps: ")
-            print "\nHTTP port set to " + webPort + "\n"
+            webPort = raw_input(colored("Enter the HTTP port for web apps: ", 'green', attrs=['bold']))
+            print colored("\nHTTP port set to " + webPort + "\n", 'green', attrs=['bold'])
             optionSet[1] = True
-
         elif select == "3":
-            uri = raw_input("Enter URI Path (Press enter for no URI): ")
+            uri = raw_input(colored("Enter URI Path (Press enter for no URI): ", 'green', attrs=['bold']))
             #Ensuring the URI path always starts with / and accepts null values
             if len(uri) == 0:
                 uri = "Not Set"
@@ -539,6 +539,9 @@ def signal_handler(signal, frame):
     print "\n"
     print "CTRL+C detected.  Exiting."
     sys.exit()
+
+def bold_yellow(text):
+    return colored(text, 'yellow', attrs=['bold'])
 
 if __name__ == '__main__':
     parser = build_parser()
