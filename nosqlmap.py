@@ -64,18 +64,18 @@ def mainMenu():
     while mmSelect:
         os.system('clear')
 
-        print colored(" _  _     ___  ___  _    __  __           ", 'red')
-        print colored("| \| |___/ __|/ _ \| |  |  \/  |__ _ _ __ ", 'red')
-        print colored("| .` / _ \__ \ (_) | |__| |\/| / _` | '_ \\",'red')
-        print colored("|_|\_\___/___/\__\_\____|_|  |_\__,_| .__/", 'red')
-        print colored(" v0.7 codingo@protonmail.com        |_|   ", 'green')
+        print colored(" _  _     ___  ___  _    __  __           ", 'red', attrs=['bold'])
+        print colored("| \| |___/ __|/ _ \| |  |  \/  |__ _ _ __ ", 'red', attrs=['bold'])
+        print colored("| .` / _ \__ \ (_) | |__| |\/| / _` | '_ \\",'red', attrs=['bold'])
+        print colored("|_|\_\___/___/\__\_\____|_|  |_\__,_| .__/", 'red', attrs=['bold'])
+        print colored(" v0.7 codingo@protonmail.com        |_|   ", 'green', attrs=['bold'])
         print "\n"
-        print "1-Set options"
-        print "2-NoSQL DB Access Attacks"
-        print "3-NoSQL Web App attacks"
-        print "4-Scan for Anonymous " + platform + " Access"
-        print "5-Change Platform (Current: " + platform + ")"
-        print "x-Exit"
+        print colored("1-Set options", 'yellow', attrs=['bold'])
+        print colored("2-NoSQL DB Access Attacks", 'yellow', attrs=['bold'])
+        print colored("3-NoSQL Web App attacks", 'yellow', attrs=['bold'])
+        print colored("4-Scan for Anonymous " + platform + " Access", 'yellow', attrs=['bold'])
+        print colored("5-Change Platform (Current: " + platform + ")",'yellow', attrs=['bold'])
+        print colored("x-Exit", 'red', attrs=['bold'])
 
         select = raw_input("Select an option: ")
 
